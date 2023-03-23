@@ -39,7 +39,12 @@ body {
 }
 
 .nav-button {
-  @apply hover:bg-black/[0.05]  dark:hover:bg-white/[0.05] relative font-mono duration-300 border-dashed border-black/20 rounded-md transition-all text-base select-none cursor-pointer;
+  --pos: 7.5px;
+  @apply hover:bg-black/[0.05] dark:hover:bg-white/[0.05] relative font-mono duration-300 border-dashed border-black/20 rounded-md transition-all text-base select-none cursor-pointer;
+}
+
+.nav-button:hover {
+  --pos: 15px;
 }
 
 .ghost-btn {
@@ -51,8 +56,10 @@ body {
   height: 100%;
   width: 100%;
   background-size: 15px 15px;
-  background-position: 7.5px 7.5px;
-  opacity: 0.1;
+  background-position: var(--pos) var(--pos);
+  opacity: 0.15;
   background-image: radial-gradient(var(--variable-color) 1px, transparent 0);
-  @apply shadow-inner;
+  transition: background-position;
+  @apply shadow-inner duration-150 transition-all ease-in-out;
 }
+

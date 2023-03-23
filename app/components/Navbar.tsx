@@ -32,7 +32,7 @@ const Character = (props: any) => {
 
 const Word = (props: any) => {
   return (
-    <motion.span ref={props.innerRef} {...props} className="inline-block mr-2">
+    <motion.span ref={props.innerref} {...props} className="inline-block mr-2">
       {props.children}
     </motion.span>
   );
@@ -46,7 +46,7 @@ interface NavButtonTypes {
 const Navbutton = ({ btnText, url }: NavButtonTypes) => {
   return (
     <div className="nav-button z-1 overflow-hidden relative z-40">
-      <motion.p
+      <motion.div
         whileHover={{
           opacity: 1,
           scale: 1.06,
@@ -57,7 +57,7 @@ const Navbutton = ({ btnText, url }: NavButtonTypes) => {
         style={{ zIndex: 90 }}
       >
         <Link className="w-full h-full top-0 left-0 grid place-items-center px-12 py-4" href={url ? url : '/'}>{btnText}</Link>
-      </motion.p>
+      </motion.div>
       <div className="ghost-btn" style={{zIndex: -1}}></div>
     </div>
   );
@@ -133,7 +133,7 @@ export default function Navbar() {
         {text.split(" ").map((word, index) => {
           return (
             <Word
-              innerRef={ref}
+              innerref={ref}
               aria-hidden="true"
               key={index}
               initial="hidden"
