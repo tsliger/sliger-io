@@ -5,11 +5,12 @@ import { useColorMode } from "@chakra-ui/react";
 import { BsGithub, BsLink, BsLinkedin } from 'react-icons/bs'
 import { sono } from './Navbar'
 import { Link as LinkComp } from "@chakra-ui/react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 
 export default function Footer() {
   const { colorMode } = useColorMode();
+  const router = useRouter();
   return (
     <footer className="relative flex flex-col w-full min-h-[275px] bg-neutral-800 text-stone-200 ">
       <div className="w-full h-32 absolute top-0 -translate-y-[100%]">
@@ -35,14 +36,14 @@ export default function Footer() {
           </div>
         </div>
         <div className={`py-12 space-x-8 font-mono ${sono.variable}`}>
-          <LinkComp>
-            <Link href="/">About</Link>
+          <LinkComp onClick={() => router.push('/')}>
+            About
           </LinkComp>
-          <LinkComp>
-            <Link href="/?loc=experience">Experience</Link>
+          <LinkComp onClick={() => router.push('/?loc=experience')}>
+            Experience
           </LinkComp>
-          <LinkComp>
-            <Link href="/contact">Contact</Link>
+          <LinkComp onClick={() => router.push('/contact')}>
+            Contact
           </LinkComp>
         </div>
       </div>

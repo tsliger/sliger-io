@@ -1,17 +1,15 @@
-import Image from 'next/image'
-import styles from './page.module.css'
 import Background from './components/Background';
+import Experience from './components/Experience';
 
 export async function generateMetadata({ params, searchParams }: any) {
-  return { title: 'Home | sliger.dev' };
+  return { title: 'Home | sliger.dev', meta: 'sliger.dev' };
 }
 
 export default function Home() {
   return (
-    <main className='min-h-screen'> 
+    <main className='min-h-[800px] '> 
       <Background />
-      <div className="bg-[#ff5500] dark:bg-blue-800 min-h-screen" id="content-home">
-      </div>
+      <Experience />
     </main>
   )
 }
