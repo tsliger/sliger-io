@@ -7,6 +7,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import theme from './misc/theme'
 import { ColorModeScript } from '@chakra-ui/react'
 import { useColorMode } from '@chakra-ui/react'
+import Footer from './components/Footer'
 
 export default function RootLayout({
   children,
@@ -21,6 +22,7 @@ export default function RootLayout({
             <ChakraProvider theme={theme}>
               <Navbar />
               {children}
+              <Footer />
             </ChakraProvider>
         </body>
       </html>

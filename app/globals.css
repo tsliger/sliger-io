@@ -8,6 +8,16 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  --variable-color: white;
+}
+
+html[data-theme='dark'] {
+  --variable-color: white;
+}
+
+html[data-theme='light'] {
+  --variable-color: black;
 }
 
 * {
@@ -29,6 +39,20 @@ body {
 }
 
 .nav-button {
-  @apply hover:bg-black/[0.05] dark:hover:bg-white/[0.05] relative font-mono duration-300 border-dashed border-black/20 rounded-md transition-all text-base select-none cursor-pointer;
+  @apply hover:bg-black/[0.05]  dark:hover:bg-white/[0.05] relative font-mono duration-300 border-dashed border-black/20 rounded-md transition-all text-base select-none cursor-pointer;
 }
 
+.ghost-btn {
+  z-index: 20;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-size: 15px 15px;
+  background-position: 7.5px 7.5px;
+  opacity: 0.1;
+  background-image: radial-gradient(var(--variable-color) 1px, transparent 0);
+  @apply shadow-inner;
+}

@@ -4,11 +4,6 @@ import React, { useState, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import { Sono } from "@next/font/google";
-import { extend } from '@react-three/fiber'
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry'
-import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
-
-extend({ TextGeometry })
 
 const sono = Sono({
   subsets: ["latin"],
@@ -17,12 +12,11 @@ const sono = Sono({
 
 function Box() {
   const myMesh = useRef(null);
-  const font = new FontLoader().load('fonts/helvetiker_bold.typeface.json');
 
   useFrame(({ clock }) => {
     console.log("Hey, I'm executing every frame!")
 
-    const mesh: ThreeElements.mesh = myMesh.current;
+    const mesh: any = myMesh.current;
 
     mesh.rotation.y = Math.sin(clock.getElapsedTime() / 4);
   })

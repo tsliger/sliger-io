@@ -21,7 +21,7 @@ const Character = (props: any) => {
     <motion.span
       {...props}
       className="inline-block mr-2 underline decoration-[1.5px] decoration-orange-theme"
-      transition={{ type: "spring", stiffness: 500 }}
+      transition={{ type: "spring", stiffness: 100 }}
     >
       {props.children}
     </motion.span>
@@ -42,7 +42,7 @@ interface NavButtonTypes {
 
 const Navbutton = ({ btnText }: NavButtonTypes) => {
   return (
-    <div className="nav-button z-1 overflow-hidden">
+    <div className="nav-button z-1 overflow-hidden relative z-40">
       <motion.p
         whileHover={{
           opacity: 1,
@@ -51,9 +51,11 @@ const Navbutton = ({ btnText }: NavButtonTypes) => {
         }}
         transition={{ ease: "backIn", duration: 0.45, delay: 0.2 }}
         className="z-50 px-12 py-4 h-full w-full text-sm"
+        style={{ zIndex: 90 }}
       >
         {btnText}
       </motion.p>
+      <div className="ghost-btn" style={{zIndex: -1}}></div>
     </div>
   );
 };
@@ -89,7 +91,7 @@ export default function Navbar() {
   const characterAnimation = {
     hidden: {
       opacity: 0,
-      y: `0.25em`,
+      y: `0.5em`,
     },
     visible: {
       opacity: 1,
