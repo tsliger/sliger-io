@@ -127,7 +127,7 @@ export default function Navbar() {
       variants={variants}
       animate={hidden ? "hidden" : "visible"}
       transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.3 }}
-      className={`h-24 bg-neutral-300 dark:bg-neutral-800 dark:text-stone-200 flex items-center text-stone-800 z-50 fixed w-full font-semibold tracking-widest text-2xl ${sono.variable} font-mono`}
+      className={`h-24 z-[60] bg-neutral-300 dark:bg-neutral-800 dark:text-stone-200 flex items-center text-stone-800  fixed w-full font-semibold tracking-widest text-2xl ${sono.variable} font-mono`}
     >
       <div className="min-w-[30%] h-full flex items-center mx-8 select-none cursor-pointer origin-left">
         {text.split(" ").map((word, index) => {
@@ -165,7 +165,7 @@ export default function Navbar() {
       >
         <Navbutton btnText={"About"} url={'/'} />
         <Navbutton btnText={"Experience"} url={'/?loc=experience'}/>
-        <Navbutton btnText={"Contact Me"} url={'/contact'} />
+        <Navbutton btnText={"Contact"} url={'/contact'} />
         <ColorModeButton />
       </motion.div>
     </motion.nav>

@@ -11,18 +11,23 @@ import {
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
 import { Textarea } from "@chakra-ui/react";
-
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import * as Yup from "yup";
+import { useColorMode } from '@chakra-ui/react';
+
 
 const ContactFormSchema = Yup.object().shape({
   firstName: Yup.string().min(3, 'Too short').max(40, 'Too long').required('Requred'),
   lastName: Yup.string().min(3, 'Too short').max(40, 'Too long').required('Requred'),
   email: Yup.string().email("Invalid email").required("Required"),
   description: Yup.string().min(30, "Must be longer than 30 characters").max(300, "Must be shorter than 300 characters").required("Required"),
+  captcha: Yup.string().required(),
 });
   
 
 export default function ContactForm() {
+  const { colorMode } = useColorMode();
+
   return (
     <Formik
       initialValues={{
@@ -30,13 +35,14 @@ export default function ContactForm() {
         lastName: "",
         email: "",
         description: "",
+        captcha: "",
       }}
       onSubmit={(values) => {
         alert(JSON.stringify(values, null, 2));
       }}
       validationSchema={ContactFormSchema}
     >
-      {({ handleSubmit, errors, touched }) => (
+      {({ setFieldValue, handleSubmit, errors, touched }) => (
         <Form onSubmit={handleSubmit}>
           <VStack spacing={4} align="flex-start">
             <FormControl isInvalid={!!errors.firstName && touched.firstName} >
@@ -81,10 +87,15 @@ export default function ContactForm() {
                 variant="filled"
                 placeholder="Enter description here..."
                 resize={'none'}
-                rows={7}
+                rows={5}
               />
               <FormErrorMessage>{errors.description}</FormErrorMessage>
             </FormControl>
+            <HCaptcha
+              sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_KEY as string}
+              onVerify={(token,ekey) => setFieldValue("captcha", token)}
+              theme={colorMode}
+            />
             <Button type="submit" colorScheme="blue" variant={'outline'}>
               Submit
             </Button>
