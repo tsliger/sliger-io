@@ -10,8 +10,10 @@ import {
 import { useInView } from "react-intersection-observer";
 import { Sono } from "@next/font/google";
 import ColorModeButton from "./ColorModeButton";
+import Link from "next/link";
+import { Url } from "next/dist/shared/lib/router/router";
 
-const sono = Sono({
+export const sono = Sono({
   subsets: ["latin"],
   variable: "--font-sono",
 });
@@ -20,7 +22,7 @@ const Character = (props: any) => {
   return (
     <motion.span
       {...props}
-      className="inline-block mr-2 underline decoration-[1.5px] decoration-orange-theme"
+      className="inline-block mr-2 underline decoration-[1.5px] dark:decoration-blue-800 decoration-orange-theme"
       transition={{ type: "spring", stiffness: 100 }}
     >
       {props.children}
@@ -38,9 +40,10 @@ const Word = (props: any) => {
 
 interface NavButtonTypes {
   btnText: string;
+  url?: Url;
 }
 
-const Navbutton = ({ btnText }: NavButtonTypes) => {
+const Navbutton = ({ btnText, url }: NavButtonTypes) => {
   return (
     <div className="nav-button z-1 overflow-hidden relative z-40">
       <motion.p
@@ -50,10 +53,10 @@ const Navbutton = ({ btnText }: NavButtonTypes) => {
           transition: { type: "spring", stiffness: 100, duration: 0.2 },
         }}
         transition={{ ease: "backIn", duration: 0.45, delay: 0.2 }}
-        className="z-50 px-12 py-4 h-full w-full text-sm"
+        className="z-50  h-full w-full text-sm relative"
         style={{ zIndex: 90 }}
       >
-        {btnText}
+        <Link className="w-full h-full top-0 left-0 grid place-items-center px-12 py-4" href={url ? url : '/'}>{btnText}</Link>
       </motion.p>
       <div className="ghost-btn" style={{zIndex: -1}}></div>
     </div>
@@ -83,9 +86,9 @@ export default function Navbar() {
 
   const variants = {
     /** this is the "visible" key and it's correlating styles **/
-    visible: { opacity: 1, y: 0, transition: { duration: 0.35 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.55, type: "spring", springStiffness: 100 } },
     /** this is the "hidden" key and it's correlating styles **/
-    hidden: { opacity: 0, y: -80, transition: { duration: 0.75 } },
+    hidden: { opacity: 0, y: -80, transition: { duration: 0.75, type: "spring", springStiffness: 100 } },
   };
 
   const characterAnimation = {
@@ -111,8 +114,6 @@ export default function Navbar() {
   const text = "thomas sliger";
 
   useEffect(() => {
-    console.log(inView);
-
     if (inView) {
       ctrls.start("visible");
     }
@@ -162,9 +163,9 @@ export default function Navbar() {
         animate={{ opacity: 1 }}
         className="opacity-0 flex-grow h-full font-sans flex items-center justify-end mx-16 space-x-8"
       >
-        <Navbutton btnText={"About"} />
-        <Navbutton btnText={"Experience"} />
-        <Navbutton btnText={"Contact Me"} />
+        <Navbutton btnText={"About"} url={'/'} />
+        <Navbutton btnText={"Experience"} url={'/?loc=experience'}/>
+        <Navbutton btnText={"Contact Me"} url={'/contact'} />
         <ColorModeButton />
       </motion.div>
     </motion.nav>
