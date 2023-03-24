@@ -7,6 +7,7 @@ import { sono } from './Navbar'
 import { Link as LinkComp } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import Link from 'next/link'
 
 
 export default function Footer() {
@@ -29,12 +30,16 @@ export default function Footer() {
       </div>
       <div className="flex-grow flex flex-col items-center justify-center z-10">
         <div className="flex space-x-8 ">
-          <motion.div whileTap={{ scale: 1.05 }} className="rounded-full border-2 border-white/20 hover:text-slate-200 text-white/20 dark:hover:border-blue-800 border-dashed  hover:border-orange-theme transition-all duration-200 ease-in-out cursor-pointer  p-4">
-            <BsGithub size={20} />
-          </motion.div>
-          <motion.div whileTap={{ scale: 1.05 }} className="rounded-full border-2 border-white/20 hover:text-slate-200 text-white/20 dark:hover:border-blue-800 border-dashed  hover:border-orange-theme transition-all duration-200 ease-in-out cursor-pointer  p-4">
-            <BsLinkedin size={20} />
-          </motion.div>
+          <Link href={'https://www.github.com/tsliger'} target="_blank">
+            <motion.div whileTap={{ scale: 1.05 }} className="rounded-full border-2 border-white/20 hover:text-slate-200 text-white/20 dark:hover:border-blue-800 border-dashed  hover:border-orange-theme transition-all duration-200 ease-in-out cursor-pointer  p-4">
+              <BsGithub size={20} />
+            </motion.div>
+          </Link>
+          <Link href={'https://www.linkedin.com/in/tom-sliger'} target="_blank">
+            <motion.div whileTap={{ scale: 1.05 }} className="rounded-full border-2 border-white/20 hover:text-slate-200 text-white/20 dark:hover:border-blue-800 border-dashed  hover:border-orange-theme transition-all duration-200 ease-in-out cursor-pointer  p-4">
+              <BsLinkedin size={20} />
+            </motion.div>
+          </Link>
         </div>
         <div className={`py-12 space-x-8 font-mono ${sono.variable}`}>
           <LinkComp onClick={() => router.push('/')}>

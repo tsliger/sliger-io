@@ -69,9 +69,9 @@ export default function Background() {
             elegant solutions to challenging problems. With a solid background
             in computer science and a keen eye for detail, I bring a depth of
             knowledge to each project I undertake. Whether it`s building a
-            scalable web application or designing a cutting-edge machine
+            scalable web application or designing a machine
             learning algorithm, I am dedicated to creating software that not
-            only meets but exceeds client expectations. Thank you for visiting my portfolio, and I look
+            only meets but exceeds client expectations. Thanks for visiting my portfolio, and I look
             forward to the opportunity to work with you.
           </p>
         </motion.div>
