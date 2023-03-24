@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { TiWeatherNight, TiWeatherSunny } from "react-icons/ti";
 import { useColorMode } from "@chakra-ui/react";
+import { motion } from "framer-motion";
 
 export default function ColorModeButton() {
   const { colorMode, toggleColorMode } = useColorMode();
   const [hovering, setHover] = useState(false);
 
   return (
-    <div
+    <motion.div
+      whileTap={{ scale: 1.05 }} 
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={toggleColorMode}
@@ -15,6 +17,6 @@ export default function ColorModeButton() {
     >
       {colorMode === "light" && <TiWeatherNight />}
       {colorMode === "dark" && <TiWeatherSunny />}
-    </div>
+    </motion.div>
   );
 }

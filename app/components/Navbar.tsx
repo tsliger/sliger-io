@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -45,7 +45,7 @@ interface NavButtonTypes {
   url?: Url;
 }
 
-const Navbutton = ({ btnText, url }: NavButtonTypes) => {
+export const Navbutton = ({ btnText, url }: NavButtonTypes) => {
   return (
     <div className="nav-button z-1 overflow-hidden relative z-40">
       <motion.div
@@ -95,20 +95,20 @@ export default function Navbar() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.55, type: "spring", springStiffness: 100 },
+      transition:  { ease: "easeInOut", duration: 0.7 },
     },
     /** this is the "hidden" key and it's correlating styles **/
     hidden: {
       opacity: 0,
       y: -80,
-      transition: { duration: 0.75, type: "spring", springStiffness: 100 },
+      transition: { ease: "easeInOut", duration: 0.5 },
     },
   };
 
   const characterAnimation = {
     hidden: {
       opacity: 0,
-      y: `0.5em`,
+      y: `0.75em`,
     },
     visible: {
       opacity: 1,
@@ -175,7 +175,7 @@ export default function Navbar() {
       </div>
       <motion.div
         animate={{ opacity: 1 }}
-        className="opacity-0 lg:flex hidden space-x-8 flex-grow h-full font-sans items-center justify-end mx-16 "
+        className="opacity-0 mr-24 ml-8 lg:flex hidden space-x-8 flex-grow h-full font-sans items-center justify-end "
       >
           <Navbutton btnText={"About"} url={"/"} />
           <Navbutton btnText={"Experience"} url={"/?loc=experience"} />
