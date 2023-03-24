@@ -48,11 +48,11 @@ export default function Background() {
   return (
     <div
       className={
-        "min-h-[800px] h-screen dark:bg-neutral-800 bg-neutral-300 relative pt-32"
+        "min-h-[800px] h-screen dark:bg-neutral-800 bg-neutral-300 relative flex flex-col-reverse lg:flex-row-reverse"
       }
     >
       <div
-        className={`absolute top-0 right-0  w-1/2 flex flex-col h-full justify-center px-20 leading-8`}
+        className={`flex flex-col h-[60%] lg:h-full justify-center text-sm md:text-base px-6 lg:px-20 leading-8 flex-grow lg:w-1/2`}
       >
         <motion.div
           initial={{ x: 55, scale: 0.95 }}
@@ -74,8 +74,8 @@ export default function Background() {
           </p>
         </motion.div>
       </div>
-      <div className="absolute w-1/2 left-0 top-0 h-full bg-[#cfcfcf] dark:bg-[#232323]">
-        <div className="w-full aspect-square grid place-items-center">
+      <div className="lg:h-full h-[40%] bg-[#cfcfcf] dark:bg-[#232323] flex-grow w-full lg:w-1/2">
+        <div className="w-full h-full overflow-hidden pt-24 lg:aspect-square grid place-items-center">
           <Canvas>
             <pointLight position={[0, 3, 10]} />
             <Box />

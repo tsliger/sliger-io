@@ -12,7 +12,7 @@ export default function Footer() {
   const { colorMode } = useColorMode();
   const router = useRouter();
   return (
-    <footer className="relative flex flex-col w-full min-h-[275px] bg-neutral-800 text-stone-200 ">
+    <footer className="relative flex flex-col w-full min-h-[275px] py-8 bg-neutral-800 text-stone-200 ">
       <div className="w-full h-32 absolute top-0 -translate-y-[100%]">
         <svg
           className="w-full absolute bottom-0 translate-y-1 z-1"

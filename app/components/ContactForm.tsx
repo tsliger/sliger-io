@@ -91,12 +91,15 @@ export default function ContactForm() {
               />
               <FormErrorMessage>{errors.description}</FormErrorMessage>
             </FormControl>
-            <HCaptcha
+            {!!touched.description && (
+              <HCaptcha
               sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_KEY as string}
               onVerify={(token,ekey) => setFieldValue("captcha", token)}
               theme={colorMode}
-            />
-            <Button type="submit" colorScheme="blue" variant={'outline'}>
+              />
+            )}
+            
+            <Button type="submit" >
               Submit
             </Button>
           </VStack>

@@ -8,6 +8,12 @@ const config = {
 
 const theme = extendTheme({
   config,
+  colors: {
+    brand: {
+     main: "#ff5500",
+     100: "#1e40af",
+   }
+ }
 })
 
 export default theme;
