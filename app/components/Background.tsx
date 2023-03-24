@@ -68,7 +68,7 @@ export default function Background() {
             and experienced software engineer, passionate about developing
             elegant solutions to challenging problems. With a solid background
             in computer science and a keen eye for detail, I bring a depth of
-            knowledge to each project I undertake. Whether it's building a
+            knowledge to each project I undertake. Whether it`s building a
             scalable web application or designing a cutting-edge machine
             learning algorithm, I am dedicated to creating software that not
             only meets but exceeds client expectations. Thank you for visiting my portfolio, and I look
