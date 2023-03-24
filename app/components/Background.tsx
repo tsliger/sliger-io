@@ -43,7 +43,7 @@ export default function Background() {
     if (elem && location === "experience") {
       elem.scrollIntoView();
     }
-  }, []);
+  }, [searchParams]);
 
   return (
     <div

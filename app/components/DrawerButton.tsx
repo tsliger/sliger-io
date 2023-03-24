@@ -12,7 +12,7 @@ const Drawer = ({ isOpen, setDrawerOpen }: any) => {
   const searchParams = useSearchParams();
   useEffect(() => {
     setDrawerOpen(false)
-  }, [searchParams]);
+  }, [searchParams, setDrawerOpen]);
   return (
     <div className="fixed top-0 h-full w-full " hidden={!isOpen}>
       <div className="h-24 -z-1" />
