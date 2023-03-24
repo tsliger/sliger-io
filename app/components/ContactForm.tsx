@@ -91,7 +91,7 @@ export default function ContactForm() {
               />
               <FormErrorMessage>{errors.description}</FormErrorMessage>
             </FormControl>
-            {!!touched.description && (
+            {!!touched.description && !errors.description && (
               <HCaptcha
               sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_KEY as string}
               onVerify={(token,ekey) => setFieldValue("captcha", token)}

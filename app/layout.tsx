@@ -7,6 +7,7 @@ const Footer = dynamic(() => import('./components/Footer'))
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from './misc/theme'
 import { ColorModeScript } from '@chakra-ui/react'
+import { Analytics } from '@vercel/analytics/react';
 
 export default function RootLayout({
   children,
@@ -23,6 +24,7 @@ export default function RootLayout({
               {children}
               <Footer />
             </ChakraProvider>
+            <Analytics />
         </body>
       </html>
   )

@@ -21,11 +21,11 @@ export default function ContactBackground() {
 
   return (
     <div className="min-h-[800px] dark:bg-neutral-800 bg-neutral-300 h-screen flex">
-        <div className="dark:bg-neutral-800 bg-neutral-300  w-1/3 hidden lg:visible flex-grow ">
+        <div className="dark:bg-neutral-800 bg-neutral-300  w-1/3 hidden lg:flex flex-grow ">
             
         </div>
         <motion.div animate={animationControl} ref={ref} className="w-full lg:w-2/3 opacity-0 flex-grow bg-[#cfcfcf] dark:bg-[#232323] flex flex-col items-center pt-40">
-            <div className="w-[500px] z-50">
+            <div className="w-[300px] lg:w-[500px] z-50">
               <h1 className={`text-3xl font-mono font-bold mb-4 ${sono.variable}`}>Reach Out</h1>
               <ContactForm />
             </div>

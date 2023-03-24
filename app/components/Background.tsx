@@ -19,7 +19,7 @@ export function Box() {
   });
 
   return (
-    <mesh ref={myMesh} rotation={[Math.PI / 6, 0, 0]} position={[0, 1, 0]}>
+    <mesh ref={myMesh} rotation={[Math.PI / 6, 0, 0]} position={[0, 0.3, 2]}>
       <boxGeometry />
       <meshStandardMaterial color="royalblue" />
       <shaderMaterial
@@ -43,7 +43,7 @@ export default function Background() {
     if (elem && location === "experience") {
       elem.scrollIntoView();
     }
-  }, []);
+  }, [searchParams]);
 
   return (
     <div
@@ -52,7 +52,7 @@ export default function Background() {
       }
     >
       <div
-        className={`flex flex-col h-[60%] lg:h-full justify-center text-sm md:text-base px-6 lg:px-20 leading-8 flex-grow lg:w-1/2`}
+        className={`flex flex-col h-[60%] lg:h-full justify-center px-8 lg:px-20 leading-8 flex-grow lg:w-1/2`}
       >
         <motion.div
           initial={{ x: 55, scale: 0.95 }}
@@ -60,17 +60,19 @@ export default function Background() {
           transition={{ ease: "backInOut", duration: 1.5, delay: 0.1 }}
           className="bottom-12 relative opacity-0"
         >
-          <h1 className={`text-3xl font-mono mb-2 font-bold ${sono.variable}`}>
+          <h1 className={`text-2xl lg:text-3xl font-mono mb-2 font-bold ${sono.variable}`}>
             About
           </h1>
-          <p>
-            A full stack developer with experience developing dynamic and
-            interactive web applications using React.js, TypeScript, and other
-            modern web technologies. Possess a wide understanding of web
-            architecture, design patterns, and software development
-            methodologies. Proficient in a plethora of programming languages
-            including C++. Adept at building high-performance, scalable, and
-            user-friendly web applications.
+          <p className="text-[0.87rem] leading-[1.8rem] lg:leading-loose md:text-base">
+            Welcome to my software engineering portfolio! I am a highly skilled
+            and experienced software engineer, passionate about developing
+            elegant solutions to challenging problems. With a solid background
+            in computer science and a keen eye for detail, I bring a depth of
+            knowledge to each project I undertake. Whether it`s building a
+            scalable web application or designing a cutting-edge machine
+            learning algorithm, I am dedicated to creating software that not
+            only meets but exceeds client expectations. Thank you for visiting my portfolio, and I look
+            forward to the opportunity to work with you.
           </p>
         </motion.div>
       </div>
