@@ -11,22 +11,31 @@ import {
 } from "@chakra-ui/react";
 import { Formik, Field, Form } from "formik";
 import { Textarea } from "@chakra-ui/react";
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import * as Yup from "yup";
-import { useColorMode } from '@chakra-ui/react';
-
+import { useColorMode, useToast } from "@chakra-ui/react";
+import axios from "axios";
 
 const ContactFormSchema = Yup.object().shape({
-  firstName: Yup.string().min(3, 'Too short').max(40, 'Too long').required('Requred'),
-  lastName: Yup.string().min(3, 'Too short').max(40, 'Too long').required('Requred'),
+  firstName: Yup.string()
+    .min(3, "Too short")
+    .max(40, "Too long")
+    .required("Requred"),
+  lastName: Yup.string()
+    .min(3, "Too short")
+    .max(40, "Too long")
+    .required("Requred"),
   email: Yup.string().email("Invalid email").required("Required"),
-  description: Yup.string().min(30, "Must be longer than 30 characters").max(300, "Must be shorter than 300 characters").required("Required"),
+  description: Yup.string()
+    .min(30, "Must be longer than 30 characters")
+    .max(300, "Must be shorter than 300 characters")
+    .required("Required"),
   captcha: Yup.string().required(),
 });
-  
 
 export default function ContactForm() {
   const { colorMode } = useColorMode();
+  const toast = useToast();
 
   return (
     <Formik
@@ -37,15 +46,32 @@ export default function ContactForm() {
         description: "",
         captcha: "",
       }}
-      onSubmit={(values) => {
-        alert(JSON.stringify(values, null, 2));
+      onSubmit={(values, formProps) => {
+        axios.post("/api/contact", values).then(() => {
+          formProps.resetForm();
+          toast({
+            title: 'Message success.',
+            description: "Message sent succesfully.",
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+          })
+        }).catch(() => {
+          toast({
+            title: 'Message failed.',
+            description: "Message not sent.",
+            status: 'error',
+            duration: 3000,
+            isClosable: true,
+          })
+        });
       }}
       validationSchema={ContactFormSchema}
     >
       {({ setFieldValue, handleSubmit, errors, touched }) => (
         <Form onSubmit={handleSubmit}>
           <VStack spacing={4} align="flex-start">
-            <FormControl isInvalid={!!errors.firstName && touched.firstName} >
+            <FormControl isInvalid={!!errors.firstName && touched.firstName}>
               <Field
                 as={Input}
                 id="firstName"
@@ -78,7 +104,9 @@ export default function ContactForm() {
               />
               <FormErrorMessage>{errors.email}</FormErrorMessage>
             </FormControl>
-            <FormControl isInvalid={!!errors.description && touched.description}>
+            <FormControl
+              isInvalid={!!errors.description && touched.description}
+            >
               <Field
                 as={Textarea}
                 id="description"
@@ -86,25 +114,23 @@ export default function ContactForm() {
                 type="text"
                 variant="filled"
                 placeholder="Enter description here..."
-                resize={'none'}
+                resize={"none"}
                 rows={5}
               />
               <FormErrorMessage>{errors.description}</FormErrorMessage>
             </FormControl>
             {!!touched.description && !errors.description && (
               <HCaptcha
-              sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_KEY as string}
-              onVerify={(token,ekey) => setFieldValue("captcha", token)}
-              theme={colorMode}
+                sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_KEY as string}
+                onVerify={(token, ekey) => setFieldValue("captcha", token)}
+                theme={colorMode}
               />
             )}
-            
-            <Button type="submit" >
-              Submit
-            </Button>
+
+            <Button type="submit">Submit</Button>
           </VStack>
         </Form>
       )}
     </Formik>
   );
-  };
+}
