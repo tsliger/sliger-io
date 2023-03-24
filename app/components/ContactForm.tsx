@@ -47,28 +47,32 @@ export default function ContactForm() {
         captcha: "",
       }}
       onSubmit={(values, formProps) => {
+        formProps.setSubmitting(true)
         axios.post("/api/contact", values).then(() => {
           formProps.resetForm();
+          formProps.setSubmitting(false)
           toast({
             title: 'Message success.',
             description: "Message sent succesfully.",
             status: 'success',
-            duration: 3000,
+            duration: 5000,
             isClosable: true,
           })
         }).catch(() => {
+          formProps.setSubmitting(false)
           toast({
             title: 'Message failed.',
             description: "Message not sent.",
             status: 'error',
-            duration: 3000,
+            duration: 5000,
             isClosable: true,
           })
         });
+
       }}
       validationSchema={ContactFormSchema}
     >
-      {({ setFieldValue, handleSubmit, errors, touched }) => (
+      {({ setFieldValue, handleSubmit, errors, touched, isValid, isSubmitting }) => (
         <Form onSubmit={handleSubmit}>
           <VStack spacing={4} align="flex-start">
             <FormControl isInvalid={!!errors.firstName && touched.firstName}>
@@ -127,7 +131,7 @@ export default function ContactForm() {
               />
             )}
 
-            <Button type="submit">Submit</Button>
+            <Button isDisabled={!touched.firstName || !isValid} isLoading={isSubmitting} type="submit">Submit</Button>
           </VStack>
         </Form>
       )}
