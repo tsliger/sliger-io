@@ -10,6 +10,7 @@ import { ColorModeScript } from '@chakra-ui/react'
 
 export default function RootLayout({
   children,
+  ...props
 }: {
   children: React.ReactNode
 }) {

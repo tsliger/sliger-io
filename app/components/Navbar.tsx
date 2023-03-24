@@ -12,6 +12,8 @@ import { Sono } from "@next/font/google";
 import ColorModeButton from "./ColorModeButton";
 import Link from "next/link";
 import { Url } from "next/dist/shared/lib/router/router";
+import DrawerButton from "./DrawerButton";
+
 
 export const sono = Sono({
   subsets: ["latin"],
@@ -56,9 +58,14 @@ const Navbutton = ({ btnText, url }: NavButtonTypes) => {
         className="z-50  h-full w-full text-sm relative"
         style={{ zIndex: 90 }}
       >
-        <Link className="w-full h-full top-0 left-0 grid place-items-center px-12 py-4" href={url ? url : '/'}>{btnText}</Link>
+        <Link
+          className="w-full h-full top-0 left-0 grid place-items-center px-12 py-4"
+          href={url ? url : "/"}
+        >
+          {btnText}
+        </Link>
       </motion.div>
-      <div className="ghost-btn" style={{zIndex: -1}}></div>
+      <div className="ghost-btn" style={{ zIndex: -1 }}></div>
     </div>
   );
 };
@@ -71,7 +78,6 @@ export default function Navbar() {
     threshold: 0.5,
     triggerOnce: true,
   });
-
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev: number = scrollY.getPrevious();
@@ -86,9 +92,17 @@ export default function Navbar() {
 
   const variants = {
     /** this is the "visible" key and it's correlating styles **/
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55, type: "spring", springStiffness: 100 } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.55, type: "spring", springStiffness: 100 },
+    },
     /** this is the "hidden" key and it's correlating styles **/
-    hidden: { opacity: 0, y: -80, transition: { duration: 0.75, type: "spring", springStiffness: 100 } },
+    hidden: {
+      opacity: 0,
+      y: -80,
+      transition: { duration: 0.75, type: "spring", springStiffness: 100 },
+    },
   };
 
   const characterAnimation = {
@@ -129,7 +143,7 @@ export default function Navbar() {
       transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.3 }}
       className={`h-24 z-[60] bg-neutral-300 dark:bg-neutral-800 dark:text-stone-200 flex items-center text-stone-800  fixed w-full font-semibold tracking-widest text-2xl ${sono.variable} font-mono`}
     >
-      <div className="min-w-[30%] h-full flex items-center mx-8 select-none cursor-pointer origin-left">
+      <div className="w-full lg:w-[30%] relative text-sm lg:text-2xl h-full flex flex-col lg:flex-row justify-center lg:items-center mx-8 select-none cursor-pointer origin-left">
         {text.split(" ").map((word, index) => {
           return (
             <Word
@@ -161,13 +175,14 @@ export default function Navbar() {
       </div>
       <motion.div
         animate={{ opacity: 1 }}
-        className="opacity-0 flex-grow h-full font-sans flex items-center justify-end mx-16 space-x-8"
+        className="opacity-0 lg:flex hidden space-x-8 flex-grow h-full font-sans items-center justify-end mx-16 "
       >
-        <Navbutton btnText={"About"} url={'/'} />
-        <Navbutton btnText={"Experience"} url={'/?loc=experience'}/>
-        <Navbutton btnText={"Contact"} url={'/contact'} />
-        <ColorModeButton />
+          <Navbutton btnText={"About"} url={"/"} />
+          <Navbutton btnText={"Experience"} url={"/?loc=experience"} />
+          <Navbutton btnText={"Contact"} url={"/contact"} />
+          <ColorModeButton />
       </motion.div>
+      <DrawerButton />
     </motion.nav>
   );
 }
