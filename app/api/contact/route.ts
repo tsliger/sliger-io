@@ -54,7 +54,7 @@ export async function POST(request: Request) {
             "name": "Thomas Sliger"
           }
         ],
-        "subject": "Contact Form Request | sliger.dev",
+        "subject": "Contact Form Submission | sliger.dev",
         "htmlContent": `
           <p>
             ${contact.firstName + " " + contact.lastName} <br/>
@@ -78,15 +78,15 @@ export async function POST(request: Request) {
         data : data
       };
 
-      axios.request(config)
-      .then((response) => {
-        return NextResponse.json({ msg: 'success' })
-      })
-      .catch((error) => {
-        return NextResponse.error()
-      });
+      let newReq = await axios(config).catch()
 
-      return NextResponse.error()
+      // Success
+      if (newReq.status === 201) 
+      {
+        return NextResponse.json({ msg: 'success' })
+      } 
+
+      return NextResponse.error();
     }
 
     if (data && data.success === false) {
