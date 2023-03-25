@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { IconButton } from "@chakra-ui/react";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -7,6 +5,8 @@ import { VscClose } from "react-icons/vsc";
 import { motion } from "framer-motion";
 import { Navbutton } from "./Navbar";
 import { useSearchParams } from "next/navigation";
+import dynamic from "next/dynamic";
+const ColorModeButton = dynamic(() => import('./ColorModeButton'))
 
 const Drawer = ({ isOpen, setDrawerOpen }: any) => {
   const searchParams = useSearchParams();
@@ -20,6 +20,9 @@ const Drawer = ({ isOpen, setDrawerOpen }: any) => {
         <Navbutton btnText={"About"} url={"/"} />
         <Navbutton btnText={"Experience"} url={"/?loc=experience"} />
         <Navbutton btnText={"Contact"} url={"/contact"} />
+        <div className="px-4">
+          <ColorModeButton />
+        </div>
       </div>
     </div>
   );

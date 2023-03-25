@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { useColorMode } from "@chakra-ui/react";
 import { sono } from "@/pages/_app";
 import { useSearchParams } from "next/navigation";
-const BackgroundCanvas = dynamic(() => import("./BackgroundCanvas"))
+const BackgroundCanvas = dynamic(() => import("./BackgroundCanvas"), {
+  ssr: false,
+})
 
 export default function Background() {
   const { colorMode } = useColorMode();
@@ -40,7 +42,7 @@ export default function Background() {
             About
           </h1>
           <p className="text-[0.87rem] leading-[1.5rem] lg:leading-loose md:text-base">
-            Welcome to my software engineering portfolio! I am a highly skilled
+            Welcome to my portfolio! I am a highly skilled
             and experienced software engineer, passionate about developing
             elegant solutions to challenging problems. With a solid background
             in computer science and a keen eye for detail, I bring a depth of

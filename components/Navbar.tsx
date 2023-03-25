@@ -9,8 +9,8 @@ import {
 import { useInView } from "react-intersection-observer";
 import Link from "next/link";
 import { Url } from "next/dist/shared/lib/router/router";
-const DrawerButton = dynamic(() => import('./DrawerButton'))
-const ColorModeButton = dynamic(() => import('./ColorModeButton'))
+const DrawerButton = dynamic(() => import("./DrawerButton"));
+const ColorModeButton = dynamic(() => import("./ColorModeButton"));
 import { sono } from "@/pages/_app";
 
 const Character = (props: any) => {
@@ -88,7 +88,7 @@ export default function Navbar() {
     visible: {
       opacity: 1,
       y: 0,
-      transition:  { ease: "easeInOut", duration: 0.7 },
+      transition: { ease: "easeInOut", duration: 0.7 },
     },
     /** this is the "hidden" key and it's correlating styles **/
     hidden: {
@@ -136,7 +136,7 @@ export default function Navbar() {
       transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.3 }}
       className={`h-24 z-[60] px-6 lg:px-16 bg-neutral-300 dark:bg-neutral-800 dark:text-stone-200 flex items-center text-stone-800  fixed w-full font-semibold tracking-widest text-2xl ${sono.variable} font-mono`}
     >
-      <div className="w-full lg:w-[30%] relative text-sm lg:text-2xl h-full flex flex-col lg:flex-row  lg:items-center justify-center select-none cursor-pointer origin-left">
+      <div className="w-full lg:w-[30%] relative text-sm lg:text-2xl h-full flex flex-col lg:flex-row justify-center lg:justify-start lg:items-center select-none cursor-pointer origin-left">
         {text.split(" ").map((word, index) => {
           return (
             <Word
@@ -170,12 +170,12 @@ export default function Navbar() {
         animate={{ opacity: 1 }}
         className="opacity-0 lg:flex hidden space-x-8 flex-grow h-full font-sans items-center justify-end "
       >
-          <Navbutton btnText={"About"} url={"/"} />
-          <Navbutton btnText={"Experience"} url={"/?loc=experience"} />
-          <Navbutton btnText={"Contact"} url={"/contact"} />
-          <ColorModeButton />
+        <Navbutton btnText={"About"} url={"/"} />
+        <Navbutton btnText={"Experience"} url={"/?loc=experience"} />
+        <Navbutton btnText={"Contact"} url={"/contact"} />
+        <ColorModeButton />
       </motion.div>
-    <DrawerButton />
+      <DrawerButton />
     </motion.nav>
   );
 }
