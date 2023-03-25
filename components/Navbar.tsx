@@ -34,7 +34,7 @@ const Character = (props: any) => {
 
 const Word = (props: any) => {
   return (
-    <motion.span ref={props.innerref} {...props} className="inline-block mr-2">
+    <motion.span ref={props.innerRef} {...props} className="inline-block mr-2">
       {props.children}
     </motion.span>
   );
@@ -147,7 +147,7 @@ export default function Navbar() {
         {text.split(" ").map((word, index) => {
           return (
             <Word
-              innerref={ref}
+              innerRef={ref}
               aria-hidden="true"
               key={index}
               initial="hidden"
