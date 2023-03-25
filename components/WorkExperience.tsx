@@ -59,7 +59,7 @@ export default function WorkExperience() {
                     cursor: ''
                   }}
                   onInit={(typewriter) => {
-                    typewriter.typeString('Anchor Systems')
+                    typewriter.typeString('Anchor Systems, Software Engineer')
                       .start();
                   }}
                 />

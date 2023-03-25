@@ -46,7 +46,7 @@ const Parallax = ({ children, offset = 50 }: ParallaxProps): JSX.Element => {
   }
 
   return (
-    <motion.div ref={ref} style={{ y }}>
+    <motion.div ref={ref} style={{ y }} className="w-full h-full">
       {children}
     </motion.div>
   );
