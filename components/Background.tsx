@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
@@ -8,6 +6,8 @@ import { sono } from "./Navbar";
 import { useSearchParams } from "next/navigation";
 
 import { fragmentShader, vertexShader } from "../misc/shaders";
+import { EffectComposer, Glitch, Pixelation } from "@react-three/postprocessing";
+
 
 export function Box() {
   const myMesh = useRef(null);
@@ -81,11 +81,15 @@ export default function Background() {
           <Canvas>
             <pointLight position={[0, 3, 10]} />
             <Box />
-            <gridHelper
+            {/* <gridHelper
               args={[30, 30, 0xff5500, "grey"]}
               rotation-x={Math.PI / 8}
               position={[0, -1, 0]}
-            />
+            /> */}
+            <EffectComposer>
+              <Glitch />
+              <Pixelation granularity={10} />
+            </EffectComposer>
           </Canvas>
         </div>
       </div>

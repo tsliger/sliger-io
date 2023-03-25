@@ -1,10 +1,12 @@
 "use client";
 
 import React from 'react'
-import ContactForm from './ContactForm';
+import dynamic from 'next/dynamic';
 import { sono } from './Navbar';
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+const ContactForm = dynamic(() => import( './ContactForm'));
+
 
 export default function ContactBackground() {
   const {inView, entry, ref} = useInView();

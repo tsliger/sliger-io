@@ -23,6 +23,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/auth/[...nextauth].js", "pages/api/auth/[...nextauth].ts", "pages/_app.js", "app/middleware.js", "app/utils/supabase-server.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "pages/api/auth/[...nextauth].js", "pages/api/auth/[...nextauth].ts", "pages/_app.js", "app_old/middleware.js", "app_old/utils/supabase-server.js"],
   "exclude": ["node_modules"]
 }
