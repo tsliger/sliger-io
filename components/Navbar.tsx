@@ -88,7 +88,7 @@ export default function Navbar() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { ease: "easeInOut", duration: 0.7 },
+      transition: { ease: "easeInOut", duration: 0.3 },
     },
     /** this is the "hidden" key and it's correlating styles **/
     hidden: {

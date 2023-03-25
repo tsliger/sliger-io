@@ -7,6 +7,8 @@ import { useSearchParams } from "next/navigation";
 const BackgroundCanvas = dynamic(() => import("./BackgroundCanvas"), {
   ssr: false,
 })
+const Parallax = dynamic(() => import('./Parallax'), { ssr: false })
+
 
 export default function Background() {
   const { colorMode } = useColorMode();
@@ -54,10 +56,14 @@ export default function Background() {
           </p>
         </motion.div>
       </div>
-      <div className="lg:h-full h-[40%] bg-[#cfcfcf] dark:bg-[#232323] flex-grow w-full lg:w-1/2">
-        <div className="w-full h-full overflow-hidden pt-24 lg:aspect-square grid place-items-center">
-          <BackgroundCanvas />
-        </div>
+      <div className="lg:h-full h-[40%] overflow-hidden  bg-[#cfcfcf] dark:bg-[#232323] flex-grow w-full lg:w-1/2">
+          <div className="w-full h-full overflow-hidden pt-24 lg:aspect-square grid place-items-center">
+            <Parallax offset={150}>
+              {/* <div className="h-full w-full"> */}
+                <BackgroundCanvas />
+              {/* </div> */}
+            </Parallax>
+          </div>
       </div>
       <svg
         ref={svgRef}
