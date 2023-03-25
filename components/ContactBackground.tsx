@@ -1,8 +1,5 @@
-"use client";
-
-import React from 'react'
 import dynamic from 'next/dynamic';
-import { sono } from './Navbar';
+import { sono } from '@/pages/_app'
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 const ContactForm = dynamic(() => import( './ContactForm'));

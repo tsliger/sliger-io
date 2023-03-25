@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TiWeatherNight, TiWeatherSunny } from "react-icons/ti";
 import { useColorMode } from "@chakra-ui/react";
 import { motion } from "framer-motion";
