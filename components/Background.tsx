@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { motion } from "framer-motion";
