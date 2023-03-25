@@ -1,34 +1,10 @@
-import React, { useEffect, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useColorMode } from "@chakra-ui/react";
-import { sono } from "./Navbar";
+import { sono } from "@/pages/_app";
 import { useSearchParams } from "next/navigation";
-
-import { fragmentShader, vertexShader } from "../misc/shaders";
-import { EffectComposer, Glitch, Pixelation } from "@react-three/postprocessing";
-
-
-export function Box() {
-  const myMesh = useRef(null);
-
-  useFrame(({ clock }) => {
-    const mesh: any = myMesh.current;
-
-    mesh.rotation.y = Math.sin(clock.getElapsedTime() / 4);
-  });
-
-  return (
-    <mesh ref={myMesh} rotation={[Math.PI / 6, 0, 0]} position={[0, 0.3, 2]}>
-      <boxGeometry />
-      <meshStandardMaterial color="royalblue" />
-      <shaderMaterial
-        fragmentShader={fragmentShader}
-        vertexShader={vertexShader}
-      />
-    </mesh>
-  );
-}
+const BackgroundCanvas = dynamic(() => import("./BackgroundCanvas"))
 
 export default function Background() {
   const { colorMode } = useColorMode();
@@ -60,10 +36,10 @@ export default function Background() {
           transition={{ ease: "backInOut", duration: 1.5, delay: 0.1 }}
           className="bottom-12 relative opacity-0"
         >
-          <h1 className={`text-2xl lg:text-3xl font-mono mb-2 font-bold ${sono.variable}`}>
+          <h1 className={`text-xl lg:text-3xl font-mono mb-2 font-bold ${sono.variable}`}>
             About
           </h1>
-          <p className="text-[0.87rem] leading-[1.8rem] lg:leading-loose md:text-base">
+          <p className="text-[0.87rem] leading-[1.65rem] lg:leading-loose md:text-base">
             Welcome to my software engineering portfolio! I am a highly skilled
             and experienced software engineer, passionate about developing
             elegant solutions to challenging problems. With a solid background
@@ -78,19 +54,7 @@ export default function Background() {
       </div>
       <div className="lg:h-full h-[40%] bg-[#cfcfcf] dark:bg-[#232323] flex-grow w-full lg:w-1/2">
         <div className="w-full h-full overflow-hidden pt-24 lg:aspect-square grid place-items-center">
-          <Canvas>
-            <pointLight position={[0, 3, 10]} />
-            <Box />
-            {/* <gridHelper
-              args={[30, 30, 0xff5500, "grey"]}
-              rotation-x={Math.PI / 8}
-              position={[0, -1, 0]}
-            /> */}
-            <EffectComposer>
-              <Glitch />
-              <Pixelation granularity={10} />
-            </EffectComposer>
-          </Canvas>
+          <BackgroundCanvas />
         </div>
       </div>
       <svg

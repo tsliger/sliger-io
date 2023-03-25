@@ -1,13 +1,11 @@
-"use client"
-
 import React from "react";
 import { useColorMode } from "@chakra-ui/react";
 import { BsGithub, BsLink, BsLinkedin } from 'react-icons/bs'
-import { sono } from './Navbar'
 import { Link as LinkComp } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Link from 'next/link'
+import { sono } from "@/pages/_app";
 
 
 export default function Footer() {

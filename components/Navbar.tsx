@@ -1,6 +1,5 @@
-"use client";
-
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import {
   motion,
   useScroll,
@@ -8,17 +7,11 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Sono } from "@next/font/google";
-import ColorModeButton from "./ColorModeButton";
 import Link from "next/link";
 import { Url } from "next/dist/shared/lib/router/router";
-import DrawerButton from "./DrawerButton";
-
-
-export const sono = Sono({
-  subsets: ["latin"],
-  variable: "--font-sono",
-});
+const DrawerButton = dynamic(() => import('./DrawerButton'))
+const ColorModeButton = dynamic(() => import('./ColorModeButton'))
+import { sono } from "@/pages/_app";
 
 const Character = (props: any) => {
   return (
@@ -141,9 +134,9 @@ export default function Navbar() {
       variants={variants}
       animate={hidden ? "hidden" : "visible"}
       transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.3 }}
-      className={`h-24 z-[60] bg-neutral-300 dark:bg-neutral-800 dark:text-stone-200 flex items-center text-stone-800  fixed w-full font-semibold tracking-widest text-2xl ${sono.variable} font-mono`}
+      className={`h-24 z-[60] px-16 bg-neutral-300 dark:bg-neutral-800 dark:text-stone-200 flex items-center text-stone-800  fixed w-full font-semibold tracking-widest text-2xl ${sono.variable} font-mono`}
     >
-      <div className="w-full lg:w-[30%] relative text-sm lg:text-2xl h-full flex flex-col lg:flex-row justify-center lg:items-center mx-8 select-none cursor-pointer origin-left">
+      <div className="w-full lg:w-[30%] relative text-sm lg:text-2xl h-full flex flex-col lg:flex-row  lg:items-center select-none cursor-pointer origin-left">
         {text.split(" ").map((word, index) => {
           return (
             <Word
@@ -175,7 +168,7 @@ export default function Navbar() {
       </div>
       <motion.div
         animate={{ opacity: 1 }}
-        className="opacity-0 mr-24 ml-8 lg:flex hidden space-x-8 flex-grow h-full font-sans items-center justify-end "
+        className="opacity-0 lg:flex hidden space-x-8 flex-grow h-full font-sans items-center justify-end "
       >
           <Navbutton btnText={"About"} url={"/"} />
           <Navbutton btnText={"Experience"} url={"/?loc=experience"} />
