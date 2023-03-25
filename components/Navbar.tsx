@@ -134,9 +134,9 @@ export default function Navbar() {
       variants={variants}
       animate={hidden ? "hidden" : "visible"}
       transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.3 }}
-      className={`h-24 z-[60] px-16 bg-neutral-300 dark:bg-neutral-800 dark:text-stone-200 flex items-center text-stone-800  fixed w-full font-semibold tracking-widest text-2xl ${sono.variable} font-mono`}
+      className={`h-24 z-[60] px-6 lg:px-16 bg-neutral-300 dark:bg-neutral-800 dark:text-stone-200 flex items-center text-stone-800  fixed w-full font-semibold tracking-widest text-2xl ${sono.variable} font-mono`}
     >
-      <div className="w-full lg:w-[30%] relative text-sm lg:text-2xl h-full flex flex-col lg:flex-row  lg:items-center select-none cursor-pointer origin-left">
+      <div className="w-full lg:w-[30%] relative text-sm lg:text-2xl h-full flex flex-col lg:flex-row  lg:items-center justify-center select-none cursor-pointer origin-left">
         {text.split(" ").map((word, index) => {
           return (
             <Word
@@ -175,7 +175,7 @@ export default function Navbar() {
           <Navbutton btnText={"Contact"} url={"/contact"} />
           <ColorModeButton />
       </motion.div>
-      <DrawerButton />
+    <DrawerButton />
     </motion.nav>
   );
 }

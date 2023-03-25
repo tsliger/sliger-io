@@ -39,7 +39,7 @@ export default function Background() {
           <h1 className={`text-xl lg:text-3xl font-mono mb-2 font-bold ${sono.variable}`}>
             About
           </h1>
-          <p className="text-[0.87rem] leading-[1.65rem] lg:leading-loose md:text-base">
+          <p className="text-[0.87rem] leading-[1.5rem] lg:leading-loose md:text-base">
             Welcome to my software engineering portfolio! I am a highly skilled
             and experienced software engineer, passionate about developing
             elegant solutions to challenging problems. With a solid background

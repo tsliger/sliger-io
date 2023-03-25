@@ -14,7 +14,7 @@ const Drawer = ({ isOpen, setDrawerOpen }: any) => {
     setDrawerOpen(false)
   }, [searchParams, setDrawerOpen]);
   return (
-    <div className="fixed top-0 h-full w-full " hidden={!isOpen}>
+    <div className="fixed top-0 left-0 h-full w-full " hidden={!isOpen}>
       <div className="h-24 -z-1" />
       <div className="dark:bg-neutral-800 space-y-8 bg-neutral-300 min-h-[800px] h-full">
         <Navbutton btnText={"About"} url={"/"} />
@@ -48,7 +48,7 @@ export default function DrawerButton() {
         whileTap={{ scale: 1.05 }}
         onClick={() => setDrawerOpen(!isOpen)}
         animate={{ opacity: 1 }}
-        className="z-50 absolute opacity-0 right-8 lg:hidden h-12 w-12 border-2 border-black/20 dark:border-white/20 dark:hover:text-slate-200 dark:text-white/20 dark:hover:border-blue-800 border-dashed text-black/20 hover:text-black hover:border-orange-theme transition-all duration-200 ease-in-out cursor-pointer rounded-md grid place-items-center"
+        className="z-50 aspect-square opacity-0  lg:hidden h-12 w-12 border-2 border-black/20 dark:border-white/20 dark:hover:text-slate-200 dark:text-white/20 dark:hover:border-blue-800 border-dashed text-black/20 hover:text-black hover:border-orange-theme transition-all duration-200 ease-in-out cursor-pointer rounded-md grid place-items-center"
       >
         {!isOpen && <RxHamburgerMenu />}
 
