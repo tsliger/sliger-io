@@ -13,7 +13,7 @@ export function Box() {
   });
 
   return (
-    <mesh ref={myMesh} rotation={[Math.PI / 6, 0, 0]} position={[0, 0.3, 2.4]}>
+    <mesh ref={myMesh} rotation={[Math.PI / 6, 0, 0]} position={[0, 0.3, 2]}>
       <boxGeometry />
       <meshStandardMaterial color="royalblue" />
       <shaderMaterial
