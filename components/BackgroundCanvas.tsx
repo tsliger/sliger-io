@@ -34,12 +34,12 @@ export default function BackgroundCanvas() {
       <Box />
       <EffectComposer>
         <Vignette eskil={false} offset={0.1} darkness={1.6} />
-        <Glitch />
+        <Glitch  ratio={0.85}/>
         <Pixelation granularity={10} />
         <DotScreen
           blendFunction={BlendFunction.NORMAL} // blend mode
           angle={Math.PI * 0.5} // angle of the dot pattern
-          scale={1.0} // scale of the dot pattern
+          scale={0.75} // scale of the dot pattern
         />
       </EffectComposer>
     </Canvas>

@@ -88,24 +88,24 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           // Success
           if (newReq.status === 201) 
           {
-            res.status(200).json({ msg: 'success' })
+            res.status(201).json({ msg: 'success' })
           } else {
-            return res.status(500).json({err: true, msg: 'error'})
+            return res.status(400).json({err: true, msg: 'error'})
           }
         }
 
         if (data && data.success === false) {
-          return res.status(500).json({err: true, msg: 'didn`t pass validation'})
+          return res.status(403).json({err: true, msg: 'HCAPTCHA couldn`t verify'})
         }
       } else {
         // Cannot verify correctly
-        res.status(500).json({err: true, msg: 'HCAPTCHA couldn`t verify'})
+        return res.status(400).json({err: true, msg: 'couldn`t validate'})
       }
 
-      res.status(200).json({ msg: 'success' })
+      return res.status(200).json({ msg: 'success' })
     } else {
       // Handle any other HTTP method
-      res.status(500).json({err: true, msg: 'Not POST request'})
+      return res.status(405).json({err: true, msg: 'Not POST request'})
     }
   }
   
