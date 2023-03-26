@@ -5,7 +5,7 @@ import { useColorMode } from "@chakra-ui/react";
 import { sono } from "@/pages/_app";
 import { useSearchParams } from "next/navigation";
 const BackgroundCanvas = dynamic(() => import("./BackgroundCanvas"), {
-  ssr: false,
+  ssr: true,
 })
 const Parallax = dynamic(() => import('./Parallax'), { ssr: false })
 
@@ -58,10 +58,10 @@ export default function Background() {
       </div>
       <div className="lg:h-full h-[40%] overflow-hidden  bg-[#cfcfcf] dark:bg-[#232323] flex-grow w-full lg:w-1/2">
           <div className="w-full h-full overflow-hidden pt-24 lg:aspect-square grid place-items-center">
-            <Parallax offset={150}>
-              {/* <div className="h-full w-full"> */}
+            <Parallax offset={110}>
+              <div className="h-full w-full">
                 <BackgroundCanvas />
-              {/* </div> */}
+              </div>
             </Parallax>
           </div>
       </div>
