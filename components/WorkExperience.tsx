@@ -33,9 +33,9 @@ export default function WorkExperience() {
       opacity: 1,
       scale: 0.98,
       transition: {
-        delay: 1.5,
+        delay: 1,
         duration: 1,
-        ease: "backOut",
+        ease: "easeInOut",
       },
     });
   }
@@ -56,10 +56,11 @@ export default function WorkExperience() {
               {isReady && (
                 <Typewriter
                   options={{
-                    cursor: ''
+                    cursor: '',
+                    delay: 1
                   }}
                   onInit={(typewriter) => {
-                    typewriter.typeString('Anchor Systems, Software Engineer')
+                    typewriter.pauseFor(500).typeString('Anchor Systems, Software Engineer')
                       .start();
                   }}
                 />
@@ -69,10 +70,11 @@ export default function WorkExperience() {
               {isReady && (
                 <Typewriter
                   options={{
-                    cursor: ''
+                    cursor: '',
+                    delay: 1
                   }}
                   onInit={(typewriter) => {
-                    typewriter.typeString('Feburary 2022 - March 2023')
+                    typewriter.pauseFor(500).typeString('Feburary 2022 - March 2023')
                       .start();
                   }}
                 />
@@ -83,7 +85,8 @@ export default function WorkExperience() {
           {isReady && (
             <Typewriter
               options={{
-                cursor: ''
+                cursor: '',
+                delay: 1
               }}
               onInit={(typewriter) => {
                 typewriter.pauseFor(1500).typeString('Defense Contractor')
