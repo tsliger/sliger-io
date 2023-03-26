@@ -43,11 +43,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         params.append('response', contact.captcha);
         params.append('secret', process.env.HCAPTCHA_SECRET as string);
         const resp = axios.post('https://hcaptcha.com/siteverify', params);
-        let data: any = await resp.catch()
-        data = data.data
+        let captcha_resp: any = await resp.catch()
+        captcha_resp = captcha_resp.data
 
         // Successful HCaptcha response
-        if (data && data.success === true) {
+        if (captcha_resp && captcha_resp.success === true) {
           let data = JSON.stringify({
             "sender": {
               "name": "noreply",
@@ -88,13 +88,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
           // Success
           if (newReq.status === 201) 
           {
-            res.status(201).json({ msg: 'success' })
+            return res.status(201).json({ msg: 'success' })
           } else {
             return res.status(400).json({err: true, msg: 'error'})
           }
         }
 
-        if (data && data.success === false) {
+        if (captcha_resp && captcha_resp.success === false) {
           return res.status(403).json({err: true, msg: 'HCAPTCHA couldn`t verify'})
         }
       } else {
