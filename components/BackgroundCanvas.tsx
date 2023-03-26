@@ -1,8 +1,9 @@
 import { useRef } from 'react'
 import { fragmentShader, vertexShader } from "../misc/shaders";
-import { EffectComposer, Glitch, Pixelation, Vignette, Bloom } from "@react-three/postprocessing";
+import { EffectComposer, Glitch, Pixelation, Vignette, DotScreen } from "@react-three/postprocessing";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { KernelSize } from 'postprocessing'
+import { BlendFunction } from 'postprocessing'
+
 
 export function Box() {
   const myMesh = useRef(null);
@@ -28,16 +29,18 @@ export function Box() {
 
 export default function BackgroundCanvas() {
   return (
-    <Canvas flat performance={{ min: 0.2, max: 0.5 }}>
+    <Canvas flat performance={{ min: 0.1, max: 0.2 }}>
       <pointLight position={[0, 3, 10]} />
       <Box />
       <EffectComposer>
-        <Bloom mipmapBlur luminanceSmoothing={0.025} intensity={0.2} luminanceThreshold={0.5}    
-        kernelSize={KernelSize.LARGE} // blur kernel size
-        />
         <Vignette eskil={false} offset={0.1} darkness={1.6} />
         <Glitch />
         <Pixelation granularity={10} />
+        <DotScreen
+          blendFunction={BlendFunction.NORMAL} // blend mode
+          angle={Math.PI * 0.5} // angle of the dot pattern
+          scale={1.0} // scale of the dot pattern
+        />
       </EffectComposer>
     </Canvas>
   )

@@ -58,7 +58,7 @@ export default function ContactForm() {
             duration: 5000,
             isClosable: true,
           })
-        }).catch(() => {
+        }).catch((err) => {
           formProps.setSubmitting(false)
           toast({
             title: 'Message failed.',
@@ -67,6 +67,7 @@ export default function ContactForm() {
             duration: 5000,
             isClosable: true,
           })
+          console.log(err)
         });
 
       }}

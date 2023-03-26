@@ -5,7 +5,7 @@ import { useColorMode } from "@chakra-ui/react";
 import { sono } from "@/pages/_app";
 import { useSearchParams } from "next/navigation";
 const BackgroundCanvas = dynamic(() => import("./BackgroundCanvas"), {
-  ssr: false,
+  ssr: true,
 })
 const Parallax = dynamic(() => import('./Parallax'), { ssr: false })
 
