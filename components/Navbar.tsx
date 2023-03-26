@@ -101,7 +101,7 @@ export default function Navbar() {
   const characterAnimation = {
     hidden: {
       opacity: 0,
-      y: `0.75em`,
+      y: `0.60em`,
     },
     visible: {
       opacity: 1,

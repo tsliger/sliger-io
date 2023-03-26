@@ -10,7 +10,6 @@ export default function contact() {
       <title>Contact | sliger.dev</title>
       <meta name="description" content="Reach out and connect. | sliger.dev" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon" href="/favicon.ico" />
     </Head>
     <ContactBackground />
   </>

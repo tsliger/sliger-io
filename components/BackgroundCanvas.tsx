@@ -11,6 +11,7 @@ export function Box() {
     const mesh: any = myMesh.current;
 
     mesh.rotation.y = Math.sin(clock.getElapsedTime() / 4);
+    mesh.rotation.z = Math.sin(clock.getElapsedTime() / 2);
   });
 
   return (
