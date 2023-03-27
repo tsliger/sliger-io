@@ -170,7 +170,7 @@ export default function Navbar() {
         animate={{ opacity: 1 }}
         className="opacity-0 lg:flex hidden space-x-8 flex-grow h-full font-sans items-center justify-end "
       >
-        <Navbutton btnText={"About"} url={"/"} />
+        <Navbutton btnText={"Home"} url={"/"} />
         <Navbutton btnText={"Experience"} url={"/?loc=experience"} />
         <Navbutton btnText={"Contact"} url={"/contact"} />
         <ColorModeButton />
