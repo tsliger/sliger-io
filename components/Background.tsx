@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useColorMode } from "@chakra-ui/react";
-import { sono } from "@/pages/_app";
 import { useSearchParams } from "next/navigation";
 const BackgroundCanvas = dynamic(() => import("./BackgroundCanvas"), {
   ssr: true,
@@ -40,9 +39,6 @@ export default function Background() {
           transition={{ ease: "backInOut", duration: 1.5, delay: 0.1 }}
           className="bottom-12 relative opacity-0"
         >
-          <h1 className={`text-xl lg:text-3xl font-mono mb-2 font-bold ${sono.variable}`}>
-            About
-          </h1>
           <p className="text-[0.87rem] leading-[1.5rem] lg:leading-loose md:text-base">
             Welcome to my portfolio! I am a highly skilled
             and experienced software engineer, passionate about developing

@@ -17,7 +17,7 @@ const Drawer = ({ isOpen, setDrawerOpen }: any) => {
     <div className="fixed top-0 left-0 h-full w-full " hidden={!isOpen}>
       <div className="h-24 -z-1" />
       <div className="dark:bg-neutral-800 space-y-8 bg-neutral-300 min-h-[800px] h-full">
-        <Navbutton btnText={"About"} url={"/"} />
+        <Navbutton btnText={"Home"} url={"/"} />
         <Navbutton btnText={"Experience"} url={"/?loc=experience"} />
         <Navbutton btnText={"Contact"} url={"/contact"} />
         <div className="px-4">
