@@ -4,10 +4,11 @@ import dynamic from 'next/dynamic'
 import { ChakraProvider } from '@chakra-ui/react'
 import theme from '../misc/theme'
 import { ColorModeScript } from '@chakra-ui/react'
-import { Analytics } from '@vercel/analytics/react';
 import { Sono } from "next/font/google";
 const Navbar = dynamic(() => import('../components/Navbar'))
 const Footer = dynamic(() => import('../components/Footer'))
+const PageTransition = dynamic(() => import('../components/PageTransition'))
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 export const sono = Sono({
   subsets: ["latin"],
@@ -19,9 +20,13 @@ export default function App({ Component, pageProps }: AppProps) {
     <ChakraProvider theme={theme}>
       <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Navbar />
-      <Component {...pageProps} />
+      <PageTransition>
+        <div className="min-h-[800px] screen-h">
+          <Component {...pageProps} />
+        </div>
+      </PageTransition>
       <Footer />
+      <GoogleAnalytics trackPageViews />
     </ChakraProvider>
-    <Analytics />
   </>
 }
