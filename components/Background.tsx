@@ -51,8 +51,8 @@ export default function Background() {
         </motion.div>
       </div>
       <div className="lg:h-full h-[40%] overflow-hidden  bg-[#cfcfcf] dark:bg-[#232323] flex-grow w-full lg:w-1/2">
-          <div className="w-full h-full z-50 overflow-hidden pt-24 lg:aspect-square grid place-items-center">
-              <div className="h-full w-full lg:-translate-y-16 z-50">
+          <div className="w-full h-full overflow-hidden pt-24 lg:aspect-square grid place-items-center">
+              <div className="h-full w-full lg:-translate-y-16">
                 <BackgroundCanvas />
               </div>
           </div>

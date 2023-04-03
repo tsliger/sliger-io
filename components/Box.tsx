@@ -1,10 +1,9 @@
 import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
-
 export function Box() {
   const myMesh = useRef(null);
-  const colors = ["green", "red", "blue", "hotpink", "yellow"];
+  const colors = ["yellow", "red", "blue", "hotpink", "green"];
   const [colorId, setColorId] = useState(0);
 
   useFrame(({ clock }) => {
