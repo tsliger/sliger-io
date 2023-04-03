@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { sono } from "@/pages/_app";
-import { Divider } from "@chakra-ui/react";
+import { Divider, Link } from "@chakra-ui/react";
+import { ExternalLinkIcon } from '@chakra-ui/icons'
 import Typewriter from 'typewriter-effect';
 
 export default function WorkExperience() {
@@ -96,13 +97,18 @@ export default function WorkExperience() {
           )}
           </div>
           <Divider />
-          <motion.p animate={blurbControl} className="text-md py-4 text-white opacity-0">
+          <motion.div animate={blurbControl} className="text-md py-4 text-white opacity-0 space-y-4">
+            <p>
             Designed, developed, and implemented software solutions to meet business
             requirements and technical specifications. Created multiple company websites,
             one with Next.js for an optimized production build. Worked with partners remotely to develop a frontend solution for Oxbow Security SIEM. Built and
             implemented a computer vision dataset to detect imperfections on a
             cargo container.  Carried out various other full stack development tasks, including developing REST services.
-          </motion.p>
+            </p>
+            <Link href='https://www.eup-ndc.tech/' isExternal textColor={'blue.300'} className="text-sm">
+              Example Work <ExternalLinkIcon mx='2px' />
+            </Link>
+          </motion.div>
         </div>
       </div>
     </motion.div>

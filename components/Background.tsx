@@ -6,8 +6,6 @@ import { useSearchParams } from "next/navigation";
 const BackgroundCanvas = dynamic(() => import("./BackgroundCanvas"), {
   ssr: true,
 })
-const Parallax = dynamic(() => import('./Parallax'), { ssr: false })
-
 
 export default function Background() {
   const { colorMode } = useColorMode();
@@ -31,7 +29,7 @@ export default function Background() {
       }
     >
       <div
-        className={`flex flex-col h-[60%] lg:h-full justify-center px-8 lg:px-20 leading-8 flex-grow lg:w-1/2`}
+        className={`flex flex-col h-[60%] lg:h-full justify-center px-8 lg:px-36 leading-8 flex-grow lg:w-1/2`}
       >
         <motion.div
           initial={{ x: 55, scale: 0.95 }}
@@ -40,11 +38,11 @@ export default function Background() {
           className="bottom-12 relative opacity-0"
         >
           <p className="text-[0.87rem] leading-[1.5rem] lg:leading-loose md:text-base">
-            Welcome to my portfolio! I am a highly skilled
+            I am a highly skilled
             and experienced software engineer, passionate about developing
             elegant solutions to challenging problems. With a solid background
             in computer science and a keen eye for detail, I bring a depth of
-            knowledge to each project I undertake. Whether it`s building a
+            knowledge to each project I undertake. Whether it's building a
             scalable web application or designing a machine
             learning algorithm, I am dedicated to creating software that not
             only meets but exceeds client expectations. Thanks for visiting my portfolio, and I look
@@ -53,12 +51,12 @@ export default function Background() {
         </motion.div>
       </div>
       <div className="lg:h-full h-[40%] overflow-hidden  bg-[#cfcfcf] dark:bg-[#232323] flex-grow w-full lg:w-1/2">
-          <div className="w-full h-full overflow-hidden pt-24 lg:aspect-square grid place-items-center">
-            <Parallax offset={110}>
-              <div className="h-full w-full">
+          <div className="w-full h-full z-50 overflow-hidden pt-24 lg:aspect-square grid place-items-center">
+            {/* <Parallax offset={110}> */}
+              <div className="h-full w-full -translate-y-16 z-50">
                 <BackgroundCanvas />
               </div>
-            </Parallax>
+            {/* </Parallax> */}
           </div>
       </div>
       <svg

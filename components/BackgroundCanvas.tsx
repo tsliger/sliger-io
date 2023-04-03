@@ -1,12 +1,18 @@
-import { useRef } from 'react'
-import { fragmentShader, vertexShader } from "../misc/shaders";
-import { EffectComposer, Glitch, Pixelation, Vignette, DotScreen } from "@react-three/postprocessing";
+import { useRef, useState } from "react";
+import {
+  EffectComposer,
+  Glitch,
+  Pixelation,
+  Vignette,
+  DotScreen,
+} from "@react-three/postprocessing";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { BlendFunction } from 'postprocessing'
-
+import { BlendFunction } from "postprocessing";
 
 export function Box() {
   const myMesh = useRef(null);
+  const colors = ['green', 'red', 'blue', 'hotpink', 'yellow'];
+  const [colorId, setColorId] = useState(0);
 
   useFrame(({ clock }) => {
     const mesh: any = myMesh.current;
@@ -16,13 +22,26 @@ export function Box() {
   });
 
   return (
-    <mesh ref={myMesh} rotation={[Math.PI / 6, 0, 0]} position={[0, 0, 2]}>
+    <mesh
+      ref={myMesh}
+      rotation={[Math.PI / 6, 0, 0]}
+      position={[0, 0, 2]}
+      onClick={() => {
+        if (colorId === 4) {
+          setColorId(0);
+        } else {
+          setColorId(colorId + 1);
+        }
+      }}
+      onPointerEnter={() => {
+        document.body.style.cursor = "pointer";
+      }}
+      onPointerLeave={() => {
+        document.body.style.cursor = "auto";
+      }}
+    >
       <boxGeometry />
-      <meshStandardMaterial color="royalblue" />
-      <shaderMaterial
-        fragmentShader={fragmentShader}
-        vertexShader={vertexShader}
-      />
+      <meshStandardMaterial color={colors[colorId]} />
     </mesh>
   );
 }
@@ -34,7 +53,7 @@ export default function BackgroundCanvas() {
       <Box />
       <EffectComposer>
         <Vignette eskil={false} offset={0.1} darkness={1.6} />
-        <Glitch  ratio={0.85}/>
+        <Glitch ratio={0.85} active={false}/>
         <Pixelation granularity={10} />
         <DotScreen
           blendFunction={BlendFunction.NORMAL} // blend mode
@@ -43,5 +62,5 @@ export default function BackgroundCanvas() {
         />
       </EffectComposer>
     </Canvas>
-  )
+  );
 }
