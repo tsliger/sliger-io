@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@builder.io/partytown": "^0.7.6",
+    "@chakra-ui/icons": "^2.0.18",
     "@chakra-ui/react": "^2.5.3",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -32,6 +33,7 @@
     "framer-motion": "^10.8.5",
     "jsonwebtoken": "^9.0.0",
     "next": "^13.2.4",
+    "nextjs-google-analytics": "^2.3.3",
     "nodemailer": "^6.9.1",
     "nodemailer-sendinblue-transport": "^2.0.1",
     "postprocessing": "^6.30.1",
