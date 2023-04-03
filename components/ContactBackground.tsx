@@ -6,7 +6,6 @@ import { Link } from '@chakra-ui/react';
 import { RxExternalLink } from 'react-icons/rx';
 const ContactForm = dynamic(() => import( './ContactForm'));
 
-
 export default function ContactBackground() {
   const {inView, entry, ref} = useInView();
   const animationControl = useAnimation();

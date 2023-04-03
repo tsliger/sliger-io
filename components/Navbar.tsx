@@ -7,61 +7,11 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import Link from "next/link";
-import { Url } from "next/dist/shared/lib/router/router";
+import { sono } from "@/pages/_app";
+import { Word, Character } from "./WordAnimation";
 const DrawerButton = dynamic(() => import("./DrawerButton"));
 const ColorModeButton = dynamic(() => import("./ColorModeButton"));
-import { sono } from "@/pages/_app";
-
-const Character = (props: any) => {
-  return (
-    <motion.span
-      {...props}
-      className="inline-block mr-2 underline decoration-[1.5px] dark:decoration-blue-800 decoration-orange-theme"
-      transition={{ type: "spring", stiffness: 100 }}
-    >
-      {props.children}
-    </motion.span>
-  );
-};
-
-const Word = (props: any) => {
-  return (
-    <motion.span ref={props.innerRef} {...props} className="inline-block mr-2">
-      {props.children}
-    </motion.span>
-  );
-};
-
-interface NavButtonTypes {
-  btnText: string;
-  url?: Url;
-}
-
-export const Navbutton = ({ btnText, url }: NavButtonTypes) => {
-  return (
-    <div className="nav-button z-1 overflow-hidden relative z-40">
-      <motion.div
-        whileHover={{
-          opacity: 1,
-          scale: 1.06,
-          transition: { type: "spring", stiffness: 100, duration: 0.2 },
-        }}
-        transition={{ ease: "backIn", duration: 0.45, delay: 0.2 }}
-        className="z-50  h-full w-full text-sm relative"
-        style={{ zIndex: 90 }}
-      >
-        <Link
-          className="w-full h-full top-0 left-0 grid place-items-center px-12 py-4"
-          href={url ? url : "/"}
-        >
-          {btnText}
-        </Link>
-      </motion.div>
-      <div className="ghost-btn" style={{ zIndex: -1 }}></div>
-    </div>
-  );
-};
+const Navbutton = dynamic(() => import("./Navbutton"));
 
 export default function Navbar() {
   const [hidden, setHidden] = useState(false);

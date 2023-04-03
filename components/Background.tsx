@@ -32,12 +32,12 @@ export default function Background() {
         className={`flex flex-col h-[60%] lg:h-full justify-center px-8 lg:px-36 leading-8 flex-grow lg:w-1/2`}
       >
         <motion.div
-          initial={{ x: 55, scale: 0.95 }}
+          initial={{ scale: 0.95 }}
           animate={{ x: 0, opacity: 1, scale: 1, skewY: -1 }}
-          transition={{ ease: "backInOut", duration: 1.5, delay: 0.1 }}
+          transition={{ ease: "backInOut", duration: 1.5, delay: 0.5 }}
           className="bottom-12 relative opacity-0"
         >
-          <p className="text-[0.87rem] leading-[1.5rem] lg:leading-loose md:text-base">
+          <p className="text-[0.87rem] relative leading-[1.5rem] lg:leading-loose md:text-base">
             I am a highly skilled
             and experienced software engineer, passionate about developing
             elegant solutions to challenging problems. With a solid background
@@ -52,11 +52,9 @@ export default function Background() {
       </div>
       <div className="lg:h-full h-[40%] overflow-hidden  bg-[#cfcfcf] dark:bg-[#232323] flex-grow w-full lg:w-1/2">
           <div className="w-full h-full z-50 overflow-hidden pt-24 lg:aspect-square grid place-items-center">
-            {/* <Parallax offset={110}> */}
-              <div className="h-full w-full -translate-y-16 z-50">
+              <div className="h-full w-full lg:-translate-y-16 z-50">
                 <BackgroundCanvas />
               </div>
-            {/* </Parallax> */}
           </div>
       </div>
       <svg

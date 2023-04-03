@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import {
   EffectComposer,
   Glitch,
@@ -6,54 +6,52 @@ import {
   Vignette,
   DotScreen,
 } from "@react-three/postprocessing";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
+import * as THREE from 'three';
 import { BlendFunction } from "postprocessing";
-
-export function Box() {
-  const myMesh = useRef(null);
-  const colors = ['green', 'red', 'blue', 'hotpink', 'yellow'];
-  const [colorId, setColorId] = useState(0);
-
-  useFrame(({ clock }) => {
-    const mesh: any = myMesh.current;
-
-    mesh.rotation.y = Math.sin(clock.getElapsedTime() / 4);
-    mesh.rotation.z = Math.sin(clock.getElapsedTime() / 2);
-  });
-
-  return (
-    <mesh
-      ref={myMesh}
-      rotation={[Math.PI / 6, 0, 0]}
-      position={[0, 0, 2]}
-      onClick={() => {
-        if (colorId === 4) {
-          setColorId(0);
-        } else {
-          setColorId(colorId + 1);
-        }
-      }}
-      onPointerEnter={() => {
-        document.body.style.cursor = "pointer";
-      }}
-      onPointerLeave={() => {
-        document.body.style.cursor = "auto";
-      }}
-    >
-      <boxGeometry />
-      <meshStandardMaterial color={colors[colorId]} />
-    </mesh>
-  );
-}
+import {
+  useScroll,
+  useVelocity,
+  useSpring,
+  useTransform,
+  useAnimationFrame,
+} from "framer-motion";
+import { Box } from "./Box";
 
 export default function BackgroundCanvas() {
+  const [glitchActive, setGlitch] = useState(false);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 50,
+    stiffness: 400,
+  });
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    clamp: false,
+  });
+
+  useAnimationFrame((t, delta) => {
+    const velocity = velocityFactor.get();
+    if (Math.abs(velocity) > 0.5) {
+      setGlitch(true);
+    } else {
+      setGlitch(false);
+    }
+  });
+
+  const del = new THREE.Vector2( 0, 0.15 );
+
   return (
     <Canvas flat performance={{ min: 0.1, max: 0.2 }}>
       <pointLight position={[0, 3, 10]} />
       <Box />
       <EffectComposer>
         <Vignette eskil={false} offset={0.1} darkness={1.6} />
-        <Glitch ratio={0.85} active={false}/>
+        <Glitch
+          ratio={0.85}
+          active={glitchActive}
+          delay={del}
+        />
         <Pixelation granularity={10} />
         <DotScreen
           blendFunction={BlendFunction.NORMAL} // blend mode
