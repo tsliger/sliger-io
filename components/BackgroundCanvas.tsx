@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import {
   EffectComposer,
   Glitch,
@@ -42,23 +42,25 @@ export default function BackgroundCanvas() {
   const del = new THREE.Vector2( 0, 0.15 );
 
   return (
-    <Canvas flat performance={{ min: 0.1, max: 0.2 }}>
-      <pointLight position={[0, 3, 10]} />
-      <Box />
-      <EffectComposer>
-        <Vignette eskil={false} offset={0.1} darkness={1.6} />
-        <Glitch
-          ratio={0.85}
-          active={glitchActive}
-          delay={del}
-        />
-        <Pixelation granularity={10} />
-        <DotScreen
-          blendFunction={BlendFunction.NORMAL} // blend mode
-          angle={Math.PI * 0.5} // angle of the dot pattern
-          scale={0.75} // scale of the dot pattern
-        />
-      </EffectComposer>
-    </Canvas>
+    <Suspense fallback={<span>loading...</span>}>
+      <Canvas performance={{ min: 0.1, max: 0.5 }}>
+        <pointLight position={[0, 3, 10]} />
+        <Box />
+        <EffectComposer>
+          <Vignette eskil={false} offset={0.1} darkness={1.6} />
+          <Glitch
+            ratio={0.85}
+            active={glitchActive}
+            delay={del}
+          />
+          <Pixelation granularity={10} />
+          <DotScreen
+            blendFunction={BlendFunction.NORMAL} // blend mode
+            angle={Math.PI * 0.5} // angle of the dot pattern
+            scale={0.75} // scale of the dot pattern
+          />
+        </EffectComposer>
+      </Canvas>
+    </Suspense>
   );
 }
