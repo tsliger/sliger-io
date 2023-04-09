@@ -51,11 +51,12 @@ export default function Navbar() {
   const characterAnimation = {
     hidden: {
       opacity: 0,
-      y: `0.60em`,
+      skewX: 30,
     },
     visible: {
       opacity: 1,
-      y: `0em`,
+      // y: `0em`,
+      skewX: 0,
       transition: {
         duration: 1,
         ease: [0.2, 0.65, 0.3, 0.9],
@@ -98,7 +99,7 @@ export default function Navbar() {
               variants={wordAnimation}
               transition={{
                 delayChildren: index * 0.25,
-                staggerChildren: 0.05,
+                staggerChildren: 0.5,
               }}
             >
               {word.split("").map((character, index) => {
