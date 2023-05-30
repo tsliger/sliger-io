@@ -1,38 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sliger.dev Portfolio Website
+
+This is a portfolio website built using Next.js, Tailwind CSS, Chakra UI, and react-three-fiber. Additionally other services are used for additional functionalities like emailing, for this project I went with the Sendinblue API.
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/): A React framework for building server-side rendered and statically generated web applications.
+- [Tailwind CSS](https://tailwindcss.com/): A utility-first CSS framework that provides a set of pre-designed components and a responsive grid system.
+- [Chakra UI](https://chakra-ui.com/): A simple and customizable component library that enhances the development experience with a set of accessible and themeable UI components.
+- [react-three-fiber](https://github.com/pmndrs/react-three-fiber): A React renderer for three.js, enabling the creation of 3D and WebGL-powered experiences in a declarative way.
+
+## Screenshots
+
+- **Dark Mode**
+![Sliger-dev light mode](https://i.postimg.cc/N0p4DYrF/Screenshot-2023-05-30-at-11-38-09-Home-sliger-dev.png)
+
+- **Light Mode**
+![Sliger-dev dark mode](https://i.postimg.cc/Jz3Kyjrb/Screenshot-2023-05-30-at-11-38-18-Home-sliger-dev.png)
 
 ## Getting Started
 
-First, run the development server:
+Follow the steps below to get a local copy of the project up and running on your machine:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/tsliger/sliger-io
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. Navigate to the project directory:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+   ```bash
+   cd your-portfolio
+   ```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+3. Install the dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Learn More
+4. Start the development server:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Open your browser and visit `http://localhost:3000` to see the portfolio website.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
+To deploy your portfolio website to a hosting platform, you can follow the deployment instructions provided by Next.js. Some popular hosting options include Vercel, Netlify, and GitHub Pages.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Contributions are welcome! If you find any issues or have suggestions for improvement, please open an issue or submit a pull request in this repository.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
