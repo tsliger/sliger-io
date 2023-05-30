@@ -30,7 +30,7 @@ Follow the steps below to get a local copy of the project up and running on your
 2. Navigate to the project directory:
 
    ```bash
-   cd your-portfolio
+   cd sliger-io
    ```
 
 3. Install the dependencies:
