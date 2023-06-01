@@ -11,10 +11,8 @@ This is a portfolio website built using Next.js, Tailwind CSS, Chakra UI, and re
 
 ## Screenshots
 
-- **Dark Mode**
 ![Sliger-dev light mode](https://i.ibb.co/7ny9BMF/Screenshot-2023-05-30-at-18-50-58-Home-sliger-dev-min.png)
 
-- **Light Mode**
 ![Sliger-dev dark mode](https://i.ibb.co/vkNLFW4/Screenshot-2023-05-30-at-18-49-51-Home-sliger-dev-min.png)
 
 ## Getting Started
